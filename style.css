@@ -20,7 +20,7 @@ font-family: var(--font-main);
 color: var(--color-text);
 }
 
-/* --- HEADER --- */
+/* --- HEADER (MOBILE FIRST) --- */
 .header {
     display: flex;
     justify-content: center;
@@ -28,10 +28,320 @@ color: var(--color-text);
     padding: 16px 20px;
     background-color: white;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 } 
 
+.menu-toggle {
+    display: block;
+    font-size: 24px;
+    background: none;
+    cursor: pointer;
+    color: var(--color-text);
+}
+
+.navbar {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+}
+
+.navbar.active {
+    display: flex;
+}
+
+.navbar a {
+    padding: 15px 20px;
+    text-decoration: none;
+    color: var(--color-text);
+    border-top: 1px solid #eee;
+}
+/* ===== HERO (MOBILE FIRST) ===== */
+.hero {
+    text-align: center;
+    padding: 60px 20x;
+    background: linear-gradient(to right, var(--color-primary), #ffc107);
+    color: white;
+}
+
+.hero h1 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.hero p {
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+.btn-cta {
+    display: inline-block;
+    background-color: white;
+    color: var(--color-primary);
+    padding: 12px 28px;
+    margin-bottom: 5px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
 .logo {
     font-size: 18px;
     font-weight: bold;
     color: var(--color-primary);
+}
+
+/* --- STATS (MOBILE FIRST) --- */
+.stats {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+    background-color: var(--color-bg-light);
+    gap: 25px;
+} 
+
+.stat-item h2 {
+    font-size: 28px;
+    color: var(--color-primary);
+}
+
+.stat-item p {
+    color: var(--coloer-text-light);
+    margin-top: 6px;
+    font-size: 14px;
+}
+
+/* --- SERVICES (MOBILE FIRST) --- */
+.services {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.service-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.service-card {
+    background-color: white;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 10px rgba (0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-6px);
+}
+
+.service-card .icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.service-card h3 {
+    margin-bottom: 10px;
+    color: var(var(--color-text));
+}
+
+.service-card p {
+    color: var(--coloer-text-light);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* ===== PROJECTS (MOBILE FIRST) ===== */
+.projects {
+    padding: 50px 20px;
+    background-color: var(--color-bg-light);
+    text-align: center;
+}
+
+.project-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.project-card {
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    text-align: left;
+}
+
+.project-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.project-info {
+    padding: 16px;
+}
+
+.project-info h3 {
+    margin-bottom: 6px;
+    color: var(--color-text);
+    font-size: 16px;
+}
+
+.project-info p {
+    color: var(--coloer-text-light);
+    font-size: 13px;
+}
+
+/* ===== CONTACT (MOBILE FIRST) ===== */
+.contact {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+}
+
+.contact-form button {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: var(--color-primary-dark);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    font-size: 13px;
+}
+/* --- RESPONSIVE: TỪ TABLET TRỞ LÊN (>= 768x) --- */
+@media (min-width: 768px) {
+    .menu-toggle {
+        display: none;
+    }
+
+    .navbar {
+        display: flex;
+        flex-direction: row;
+        position: static;
+        width: auto;
+        box-shadow: none;
+        gap: 30px;
+    }
+
+    .navbar a {
+        padding: 0;
+        border-top: none;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero p {
+        font-size: 18px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+       
+    }
+
+    .btn-cta {
+        padding: 15px 35px;
+        font-size: 16px;
+    }
+
+    /* STATS DESKTOP */
+    .stats {
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 60px 20px;
+    }
+
+    .stat-item h2 {
+        font-size: 36px;
+    }
+
+    /* SERVICES DESKTOP */
+    .services {
+        padding: 80px 20px;
+    }
+
+    .section-title {
+        font-size: 32px;
+        margin-bottom: 50px;
+    }
+
+    .service-cards {
+        flex-direction: row;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .service-card {
+        width: 280px;
+        padding: 40px 25px;
+    }
+    /* PROJECTS DESKTOP */
+    .projects {
+        padding: 80px 20px;
+    }
+
+    .project-cards {
+        flex-direction: row;
+        justify-content: center;
+        gap: 25px;
+    }
+
+    .project-card {
+        width: 300px;
+    }
+
+    /* CONTACT DESKTOP */
+    .contact {
+        padding: 80px 20px;
+    }
+
+    .contact-form {
+        max-width: 500px;
+        margin: 0 auto;
+    }
 }

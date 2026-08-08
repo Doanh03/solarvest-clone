@@ -10,8 +10,96 @@
 
     <header class="header">
         <div class="logo">☀️ SunPower Việt</div>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <nav class="navbar" id="navbar">
+            <a href="#">Trang chủ</a>
+            <a href="#services">Dịch vụ</a>
+            <a href="#projects">Dự án</a>
+            <a href="#contact">Liên hệ</a>
+        </nav>
     </header>
+    <section class="hero">
+        <h1>Giải Pháp Điện Mặt Trời Cho Doanh Nghiệp</h1>
+        <p>Tiết kiệm chi phí điện, bảo vệ mội trường với hệ thống điện mặt trời áp mái hiệu suất cao.</p>
+        <a href="#contact" class="btn-cta">Nhận Tư Vấn Miễn Phí</a>
+    </section>
+    <section class="stats">
+        <div class="stat-item">
+            <h2>150+</h2>
+            <p>Dự Án Đã Triển Khai</p>
+        </div>
+        <div class="stat-item">
+            <h2>50MWp</h2>
+            <p>Công Suất Lắp Đặt</p>
+        </div>
+        <div class="stat-item">
+            <h2>10,000+</h2>
+            <p>Tấn CO2 Giảm Thải Mỗi Năm</p>
+        </div>
+    </section>
 
+    <section class="services" id="services">
+        <h2 class="section-title">Dịch Vụ Của Chúng Tôi</h2>
+        <div class="service-cards">
+            <div class="service-card">
+                <div class="icon">☀️</div>
+                <h3>Điện Mặt Trời Áp Mái</h3>
+                <p>Lắp đặt hệ thống điện mặt trời trên mái nhà xưởng, văn phòng, giúp tiết kiệm chi phí điện.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon">💰</div>
+                <h3>Giải Pháp Tài Chính</h3>
+                <p>Hỗ trợ tài chính linh hoạt, không cần vốn đầu tư ban đầu (Zero-CAPEX).</p>
+            </div>
+            <div class="service-card">
+                <div class="icon">🔧</div>
+                <h3>Vận Hành & Bảo Trì</h3>
+                <p>Giám sát, bảo dưỡng định kỳ, đảm bảo hệ thống vận hành hiệu quả lâu dài.</p>
+            </div>
+        </div>
+    </section>
+    <section class="projects" id="projects">
+        <h2 class="section-title">Dự Án Tiêu Biểu</h2>
+        <div class="project-cards">
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400" alt="Nhà máy dệt may">
+                <div class="project-info">
+                    <h3>Nhà Máy Dệt May</h3>
+                    <p>Bình Dương &middot; 800 kWp</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400" alt="Nhà máy chế biến gỗ">
+                <div class="project-info">
+                    <h3>Nhà Máy Chế Biến Gỗ</h3>
+                    <p>Đồng Nai &middot; 600 kWp</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400" alt="Nhà máy thực phẩm">
+                <div class="project-info">
+                    <h3>Nhà Máy Thực Phẩm</h3>
+                    <p>Hải Dương &middot; 1,200 kWp</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2 class="section-title">Liên Hệ Với Chúng Tôi</h2>
+        <form class="contact-form" id="contactForm">
+            <input type="text" id="inputName" placeholder="Họ và tên" required>
+            <input type="email" id="inputEmail" placeholder="Email" required>
+            <input type="tel" id="inputPhone" placeholder="Số điện thoại" required>
+            <textarea id="inputMessage" placeholder="Nội dung cần tư vấn" rows="4"></textarea>
+            <button type="submit">Gửi Yêu Cầu</button>
+            <p id="formError" style="color: red;"></p>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 SunPower Việt. Đã đăng ký bản quyền.</p>
+    </footer>
 </body>
 <script src="script.js"></script>
 </html>
