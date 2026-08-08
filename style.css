@@ -91,6 +91,13 @@ color: var(--color-text);
     text-decoration: none;
     font-weight: bold;
     font-size: 14px;
+    transition: all 0.3s;
+}
+.btn-cta:hover {
+    background-color: var(--color-text);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
 }
 .logo {
     font-size: 18px;
@@ -254,6 +261,11 @@ color: var(--color-text);
 }
 /* --- RESPONSIVE: TỪ TABLET TRỞ LÊN (>= 768x) --- */
 @media (min-width: 768px) {
+    .header {
+        justify-content: space-between;
+        padding: 16px 50px;
+    }
+    
     .menu-toggle {
         display: none;
     }
@@ -267,9 +279,31 @@ color: var(--color-text);
         gap: 30px;
     }
 
-    .navbar a {
-        padding: 0;
-        border-top: none;
+    .navbar a {    
+        padding: 15px 20px;
+        text-decoration: none;
+        color: var(--color-text);
+        border-top: 1px solid #eee;
+        position: relative;
+        transition: color 0.3s;
+    }
+    .navbar a::after {
+    content: "";
+    position: absolute;
+    bottom: 8px;
+    left: 20px;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width 0.3s;
+    }
+
+    .navbar a:hover {
+    color: var(--color-primary);
+    }
+
+    .navbar a:hover::after {
+    width: calc(100% - 40px);
     }
 
     .hero h1 {
