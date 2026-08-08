@@ -1,0 +1,37 @@
+/* --- CSS RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- CSS VARIABLES ( Biến dùng chung toàn trang) --- */
+:root {
+    --color-primary: #ff9800;
+    --color-primary-dark: #e68900;
+    --color-text: #333;
+    --coloer-text-light: #666;
+    --color-bg-light: #fafafa;
+    --font-main: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+font-family: var(--font-main);
+color: var(--color-text);
+}
+
+/* --- HEADER --- */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+} 
+
+.logo {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--color-primary);
+}
