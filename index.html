@@ -40,74 +40,20 @@
 
     <section class="services" id="services">
         <h2 class="section-title">Dịch Vụ Của Chúng Tôi</h2>
-        <div class="service-cards">
-            <div class="service-card">
-                <div class="icon">☀️</div>
-                <h3>Điện Mặt Trời Áp Mái</h3>
-                <p>Lắp đặt hệ thống điện mặt trời trên mái nhà xưởng, văn phòng, giúp tiết kiệm chi phí điện.</p>
-            </div>
-            <div class="service-card">
-                <div class="icon">💰</div>
-                <h3>Giải Pháp Tài Chính</h3>
-                <p>Hỗ trợ tài chính linh hoạt, không cần vốn đầu tư ban đầu (Zero-CAPEX).</p>
-            </div>
-            <div class="service-card">
-                <div class="icon">🔧</div>
-                <h3>Vận Hành & Bảo Trì</h3>
-                <p>Giám sát, bảo dưỡng định kỳ, đảm bảo hệ thống vận hành hiệu quả lâu dài.</p>
-            </div>
+        <div class="service-cards" id="serviceCards">
+            <!-- JS sẽ tự động thêm vào đây -->
         </div>
     </section>
     <section class="projects" id="projects">
         <h2 class="section-title">Dự Án Tiêu Biểu</h2>
-        <div class="project-cards">
-            <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400" alt="Nhà máy dệt may">
-                <div class="project-info">
-                    <h3>Nhà Máy Dệt May</h3>
-                    <p>Bình Dương &middot; 800 kWp</p>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400" alt="Nhà máy chế biến gỗ">
-                <div class="project-info">
-                    <h3>Nhà Máy Chế Biến Gỗ</h3>
-                    <p>Đồng Nai &middot; 600 kWp</p>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400" alt="Nhà máy thực phẩm">
-                <div class="project-info">
-                    <h3>Nhà Máy Thực Phẩm</h3>
-                    <p>Hải Dương &middot; 1,200 kWp</p>
-                </div>
-            </div>
+        <div class="project-cards" id="projectCards">
+      <!-- JS sẽ tự động thêm project-card vào đây -->
         </div>
     </section>
     <section class="testimonials">
         <h2 class="section-title">Khách Hàng Nói Gì Về Chúng Tôi</h2>
-        <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <p class="quote">"Hệ thống vận hành ổn định, tiết kiệm hơn 30% chi phí điện mỗi tháng. Đội ngũ hỗ trợ rất chuyên nghiệp."</p>
-                <div class="author">
-                    <strong>Anh Nguyễn Văn Hùng</strong>
-                    <span>Giám đốc Nhà Máy Dệt May</span>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <p class="quote">"Quy trình lắp đặt nhanh gọn, không ảnh hưởng đến hoạt động sản xuất. Rất hài lòng với dịch vụ."</p>
-                <div class="author">
-                    <strong>Chị Trần Thị Mai</strong>
-                    <span>Quản lý Nhà Máy Chế Biến Gỗ</span>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <p class="quote">"Giải pháp tài chính linh hoạt giúp công ty đầu tư mà không cần vốn lớn ban đầu. Đáng tin cậy."</p>
-                <div class="author">
-                    <strong>Anh Lê Minh Đức</strong>
-                    <span>CEO Nhà Máy Thực Phẩm</span>
-                </div>
-            </div>
+        <div class="testimonial-grid" id="testimonialGrid">
+             <!-- JS sẽ tự động thêm vào đây -->
         </div>
     </section>
     <section class="faq">
@@ -144,11 +90,11 @@
     </section>
     <section class="contact" id="contact">
         <h2 class="section-title">Liên Hệ Với Chúng Tôi</h2>
-        <form class="contact-form" id="contactForm">
-            <input type="text" id="inputName" placeholder="Họ và tên" required>
-            <input type="email" id="inputEmail" placeholder="Email" required>
-            <input type="tel" id="inputPhone" placeholder="Số điện thoại" required>
-            <textarea id="inputMessage" placeholder="Nội dung cần tư vấn" rows="4"></textarea>
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xljrgvzy" method="POST">
+            <input type="text" id="inputName" name="ho_ten" placeholder="Họ và tên" required>
+            <input type="email" id="inputEmail" name="email" placeholder="Email" required>
+            <input type="tel" id="inputPhone" name="so_dien_thoai" placeholder="Số điện thoại" required>
+            <textarea id="inputMessage" name="noi_dung" placeholder="Nội dung cần tư vấn" rows="4"></textarea>
             <button type="submit">Gửi Yêu Cầu</button>
             <p id="formError" style="color: red;"></p>
         </form>

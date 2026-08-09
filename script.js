@@ -1,5 +1,107 @@
 // SunPower Việt - script.js
 console.log("Trang web đã load thành công!");
+
+// ===== DỮ LIỆU DỰ ÁN =====
+const danhSachDuAn = [
+    {
+        ten: "Nhà Máy Dệt May",
+        diaDiem: "Bình Dương",
+        congSuat: "800 kWp",
+        anh: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400"
+    },
+    {
+        ten: "Nhà Máy Chế Biến Gỗ",
+        diaDiem: "Đồng Nai",
+        congSuat: "600 kWp",
+        anh: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400"
+    },
+    {
+        ten: "Nhà Máy Thực Phẩm",
+        diaDiem: "Hải Dương",
+        congSuat: "1,200 kWp",
+        anh: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400"
+    }
+];
+
+// ===== DỮ LIỆU DỊCH VỤ =====
+const danhSachDichVu = [
+    {
+        icon: "☀️",
+        ten: "Điện Mặt Trời Áp Mái",
+        moTa:"Lắp đặt hệ thống điện mặt trời trên mái nhà xưởng, văn phòng, giúp tiết kiệm chi phí điện."
+    },
+    {
+        icon: "💰",
+        ten: "Giải Pháp Tài Chính",
+        moTa: "Hỗ trợ tài chính linh hoạt, không cần vốn đầu tư ban đầu (Zero-CAPEX)."
+    },
+    {
+        icon: "🔧",
+        ten: "Vận Hành & Bảo Trì",
+        moTa: "Giám sát, bảo dưỡng định kỳ, đảm bảo hệ thống vận hành hiệu quả lâu dài."
+    }
+];
+
+const serviceContainer = document.querySelector("#serviceCards");
+
+danhSachDichVu.forEach(function(dichVu) {
+    serviceContainer.innerHTML += `
+    <div class="service-card">
+        <div class="icon">${dichVu.icon}</div>
+        <h3>${dichVu.ten}</h3>
+        <p>${dichVu.moTa}</p>
+    </div>
+    `;
+});
+
+// ===== DỮ LIỆU TESTIMONIALS =====
+const danhSachDanhGia = [
+    {
+        noiDung: "Hệ thống vận hành ổn định, tiết kiệm hơn 30% chi phí điện mỗi tháng. Đội ngũ hỗ trợ rất chuyên nghiệp.",
+        ten: "Anh Nguyễn Văn Hùng",
+        chucVu: "Giám đốc Nhà Máy Dệt May"
+    },
+    {
+        noiDung: "Quy trình lắp đặt nhanh gọn, không ảnh hưởng đến hoạt động sản xuất. Rất hài lòng với dịch vụ.",
+        ten: "Chị Trần Thị Mai",
+        chucVu: "Quản lý Nhà Máy Chế Biến Gỗ"
+    },
+    {
+        noiDung: "Giải pháp tài chính linh hoạt giúp công ty đầu tư mà không cần vốn lớn ban đầu. Đáng tin cậy.",
+        ten: "Anh Lê Minh Đức",
+        chucVu: "CEO Nhà Máy Thực Phẩm"
+    }
+];
+
+const testimonialContainer = document.querySelector("#testimonialGrid");
+
+danhSachDanhGia.forEach(function(danhGia){
+    testimonialContainer.innerHTML += `
+    <div class="testimonial-card">
+        <p class="quote">${danhGia.noiDung}</p>
+        <div class="author">
+            <strong>${danhGia.ten}</strong>
+            <span>${danhGia.chucVu}</span>
+        </div>
+    </div>
+    `;
+});
+
+// ===== TỰ ĐỘNG TẠO HTML TỪ DỮ LIỆU =====
+const projectContainer = document.querySelector("#projectCards");
+
+danhSachDuAn.forEach(function(duAn) {
+    projectContainer.innerHTML += `
+        <div class="project-card">
+            <img src="${duAn.anh}" alt="${duAn.ten}">
+            <div class="project-info">
+                <h3>${duAn.ten}</h3>
+                <p>${duAn.diaDiem} &middot; ${duAn.congSuat}</p>
+            </div>
+        </div>
+    `;
+});
+
 // Menu Hamburger
 const menuToggle = document.querySelector("#menuToggle");
 const navbar = document.querySelector("#navbar");
@@ -22,17 +124,41 @@ form.addEventListener("submit", function(event) {
     if (ten === "") {
         errorText.style.color = "red";
         errorText.textContent = "Vui lòng nhập họ tên";
+        return;
     } else if (!email.includes("@")) {
         errorText.style.color = "red";
         errorText.textContent = "Email không hợp lệ";
+        return;
     } else if (phone.length < 9) {
         errorText.style.color = "red";
         errorText.textContent = "Số điện thoại không hợp lệ";
-    } else {
-        errorText.style.color = "green";
-        errorText.textContent = "Gửi thành công! Cảm ơn bạn đã liên hệ.";
-        form.reset();
+        return;
     }
+    // Nếu qua hết validation, mới gửi dữ liệu thật tới Formspree
+    errorText.style.color = "var(--color-primary)";
+    errorText.textContent = "Đang gửi...";
+
+    fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: {
+            "Accept": "application/json"
+        }
+    })
+    .then(function(response){
+        if (response.ok) {
+            errorText.style.color = "green";
+            errorText.textContent = "Gửi thành công! Cảm ơn bạn đã liên hệ.";
+            form.reset();
+        } else {
+            errorText.style.color = "red";
+            errorText.textContent = "Có lỗi xảy ra, vui lòng thử lại";
+        }
+    })
+    .catch(function(error){
+        errorText.style.color = "red";
+        errorText.textContent = "Không thể kết nối, vui lòng kiểm tra mạng.";
+    });
 });
 
 // FAQ Accordion
