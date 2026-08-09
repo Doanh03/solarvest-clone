@@ -259,6 +259,108 @@ color: var(--color-text);
     color: white;
     font-size: 13px;
 }
+
+/* ===== TESTIMONIALS (MOBILE FIRST) ===== */
+.testimonials {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.testimonial-card {
+    background-color: var(--color-bg-light);
+    border-radius: 12px;
+    padding: 25px;
+    text-align: left;
+}
+
+.quote {
+    font-size: 14px;
+    color: var(--coloer-text-light);
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.author strong {
+    display: block;
+    color: var(--color-text);
+    font-size: 14px;
+}
+
+.author span {
+    font-size: 12px;
+    color: var(--coloer-text-light);
+}
+
+/* ===== FAQ (MOBILE FIRST) ===== */
+.faq {
+    padding: 50px 20px;
+    background-color: var(--color-bg-light);
+}
+
+.faq-list {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 20px;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text);
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.faq-icon {
+    font-size: 20px;
+    color: var(--color-primary);
+    transition: transform 0.3s;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 20px;
+}
+
+.faq-answer p {
+    padding-bottom: 18px;
+    font-size: 14px;
+    color: var(--coloer-text-light);
+    line-height: 1.6;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+/*=====================================================================================*/
 /* --- RESPONSIVE: TỪ TABLET TRỞ LÊN (>= 768x) --- */
 @media (min-width: 768px) {
     .header {
@@ -377,5 +479,19 @@ color: var(--color-text);
     .contact-form {
         max-width: 500px;
         margin: 0 auto;
+    }
+    /* TESTIMONIALS DESKTOP */
+    .testimonials {
+        padding: 80px 20px;
+    }
+
+    .testimonial-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 25px;
+    }
+
+    /* FAQ DESKTOP */
+    .faq {
+        padding: 80px 20px;
     }
 }
