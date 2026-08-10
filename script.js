@@ -94,7 +94,13 @@ const serviceContainer = document.querySelector("#serviceCards");
 
 if (serviceContainer) {
     danhSachDichVu.forEach(function(dichVu) {
-        serviceContainer.innerHTML += `...`;
+        serviceContainer.innerHTML += `
+            <div class="service-card">
+                <div class="icon">${dichVu.icon}</div>
+                <h3>${dichVu.ten}</h3>
+                <p>${dichVu.moTa}</p>
+            </div>
+        `;
     });
 }
 
