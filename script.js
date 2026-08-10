@@ -1,3 +1,27 @@
+// ===== NHÚNG HEADER & FOOTER DÙNG CHUNG =====
+function naploadPartial(url, placeholderId) {
+    fetch(url)
+        .then(function(response) {
+            return response.text();
+        })
+        .then(function(html) {
+            document.querySelector(placeholderId).innerHTML = html;
+        })
+        .then(function() {
+            // Sau khi Header đã load xong, mới gắn sự kiện Menu Hamburger
+            if (placeholderId === "#header-placeholder") {
+                const menuToggle = document.querySelector("#menuToggle");
+                const navbar = document.querySelector("#navbar");
+                menuToggle.addEventListener("click", function() {
+                    navbar.classList.toggle("active");
+                });
+            }
+        });
+}
+
+naploadPartial("partials/header.html", "#header-placeholder");
+naploadPartial("partials/footer.html", "#footer-placeholder");
+
 // SunPower Việt - script.js
 console.log("Trang web đã load thành công!");
 
@@ -100,14 +124,6 @@ danhSachDuAn.forEach(function(duAn) {
             </div>
         </div>
     `;
-});
-
-// Menu Hamburger
-const menuToggle = document.querySelector("#menuToggle");
-const navbar = document.querySelector("#navbar");
-
-menuToggle.addEventListener("click", function() {
-    navbar.classList.toggle("active");
 });
 
 // Form Validation
