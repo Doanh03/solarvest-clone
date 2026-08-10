@@ -553,6 +553,54 @@ color: var(--color-text);
     gap: 20px;
 }
 
+/* ===== CONTACT PAGE ===== */
+.contact-page {
+    padding: 50px 20px;
+}
+
+.contact-page-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+.contact-info h2,
+.contact-form-wrapper h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.info-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.info-item strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+.info-item p {
+    color: var(--coloer-text-light);
+    font-size: 14px;
+}
+
+.map-embed {
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.map-embed iframe {
+    display: block;
+}
 /*=====================================================================================*/
 /* --- RESPONSIVE: TỪ TABLET TRỞ LÊN (>= 768x) --- */
 @media (min-width: 768px) {
@@ -752,7 +800,7 @@ color: var(--color-text);
     .cta-section h2 {
         font-size: 32px;
     }
-    
+
     #allProjectCards {
         flex-direction: row;
         flex-wrap: wrap;
@@ -761,6 +809,22 @@ color: var(--color-text);
 
     #allProjectCards .project-card {
         width: 300px;
+    }
+
+    /* CONTACT PAGE DESKTOP */
+    .contact-page {
+        padding: 80px 50px;
+    }
+
+    .contact-page-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: start;
+    }
+
+    .contact-info h2,
+    .contact-form-wrapper h2 {
+        font-size: 24px;
     }
 }
 

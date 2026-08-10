@@ -153,6 +153,7 @@ if (projectContainer) {
 }
 
 // Form Validation
+// Form Validation
 const form = document.querySelector("#contactForm");
 const errorText = document.querySelector("#formError");
 
@@ -163,18 +164,26 @@ if (form) {
         const ten = document.querySelector("#inputName").value;
         const email = document.querySelector("#inputEmail").value;
         const phone = document.querySelector("#inputPhone").value;
+        const noiDung = document.querySelector("#inputMessage").value;
 
-        if (ten === "") {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phoneRegex = /^(0|\+84)[0-9]{9,10}$/;
+
+        if (ten.trim().length < 2) {
             errorText.style.color = "red";
-            errorText.textContent = "Vui lòng nhập họ tên";
+            errorText.textContent = "Vui lòng nhập họ tên đầy đủ (ít nhất 2 ký tự)";
             return;
-        } else if (!email.includes("@")) {
+        } else if (!emailRegex.test(email)) {
             errorText.style.color = "red";
-            errorText.textContent = "Email không hợp lệ";
+            errorText.textContent = "Email không đúng định dạng (VD: ten@email.com)";
             return;
-        } else if (phone.length < 9) {
+        } else if (!phoneRegex.test(phone)) {
             errorText.style.color = "red";
-            errorText.textContent = "Số điện thoại không hợp lệ";
+            errorText.textContent = "Số điện thoại không hợp lệ (VD: 0912345678)";
+            return;
+        } else if (noiDung.trim().length < 10) {
+            errorText.style.color = "red";
+            errorText.textContent = "Vui lòng nhập nội dung chi tiết hơn (ít nhất 10 ký tự)";
             return;
         }
 
