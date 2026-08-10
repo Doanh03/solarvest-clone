@@ -68,15 +68,11 @@ const danhSachDichVu = [
 
 const serviceContainer = document.querySelector("#serviceCards");
 
-danhSachDichVu.forEach(function(dichVu) {
-    serviceContainer.innerHTML += `
-    <div class="service-card">
-        <div class="icon">${dichVu.icon}</div>
-        <h3>${dichVu.ten}</h3>
-        <p>${dichVu.moTa}</p>
-    </div>
-    `;
-});
+if (serviceContainer) {
+    danhSachDichVu.forEach(function(dichVu) {
+        serviceContainer.innerHTML += `...`;
+    });
+}
 
 // ===== DỮ LIỆU TESTIMONIALS =====
 const danhSachDanhGia = [
@@ -99,90 +95,90 @@ const danhSachDanhGia = [
 
 const testimonialContainer = document.querySelector("#testimonialGrid");
 
-danhSachDanhGia.forEach(function(danhGia){
-    testimonialContainer.innerHTML += `
-    <div class="testimonial-card">
-        <p class="quote">${danhGia.noiDung}</p>
-        <div class="author">
-            <strong>${danhGia.ten}</strong>
-            <span>${danhGia.chucVu}</span>
-        </div>
-    </div>
-    `;
-});
+if (testimonialContainer) {
+    danhSachDanhGia.forEach(function(danhGia) {
+        testimonialContainer.innerHTML += `
+            <div class="testimonial-card">
+                <p class="quote">${danhGia.noiDung}</p>
+                <div class="author">
+                    <strong>${danhGia.ten}</strong>
+                    <span>${danhGia.chucVu}</span>
+                </div>
+            </div>
+        `;
+    });
+}
 
 // ===== TỰ ĐỘNG TẠO HTML TỪ DỮ LIỆU =====
 const projectContainer = document.querySelector("#projectCards");
 
-danhSachDuAn.forEach(function(duAn) {
-    projectContainer.innerHTML += `
-        <div class="project-card">
-            <img src="${duAn.anh}" alt="${duAn.ten}">
-            <div class="project-info">
-                <h3>${duAn.ten}</h3>
-                <p>${duAn.diaDiem} &middot; ${duAn.congSuat}</p>
-            </div>
-        </div>
-    `;
-});
+if (projectContainer) {
+    danhSachDuAn.forEach(function(duAn) {
+        projectContainer.innerHTML += `...`;
+    });
+}
 
 // Form Validation
 const form = document.querySelector("#contactForm");
 const errorText = document.querySelector("#formError");
 
-form.addEventListener("submit", function(event) {
-    event.preventDefault();
+if (form) {
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
 
-    const ten = document.querySelector("#inputName").value;
-    const email = document.querySelector("#inputEmail").value;
-    const phone = document.querySelector("#inputPhone").value;
+        const ten = document.querySelector("#inputName").value;
+        const email = document.querySelector("#inputEmail").value;
+        const phone = document.querySelector("#inputPhone").value;
 
-    if (ten === "") {
-        errorText.style.color = "red";
-        errorText.textContent = "Vui lòng nhập họ tên";
-        return;
-    } else if (!email.includes("@")) {
-        errorText.style.color = "red";
-        errorText.textContent = "Email không hợp lệ";
-        return;
-    } else if (phone.length < 9) {
-        errorText.style.color = "red";
-        errorText.textContent = "Số điện thoại không hợp lệ";
-        return;
-    }
-    // Nếu qua hết validation, mới gửi dữ liệu thật tới Formspree
-    errorText.style.color = "var(--color-primary)";
-    errorText.textContent = "Đang gửi...";
-
-    fetch(form.action, {
-        method: "POST",
-        body: new FormData(form),
-        headers: {
-            "Accept": "application/json"
-        }
-    })
-    .then(function(response){
-        if (response.ok) {
-            errorText.style.color = "green";
-            errorText.textContent = "Gửi thành công! Cảm ơn bạn đã liên hệ.";
-            form.reset();
-        } else {
+        if (ten === "") {
             errorText.style.color = "red";
-            errorText.textContent = "Có lỗi xảy ra, vui lòng thử lại";
+            errorText.textContent = "Vui lòng nhập họ tên";
+            return;
+        } else if (!email.includes("@")) {
+            errorText.style.color = "red";
+            errorText.textContent = "Email không hợp lệ";
+            return;
+        } else if (phone.length < 9) {
+            errorText.style.color = "red";
+            errorText.textContent = "Số điện thoại không hợp lệ";
+            return;
         }
-    })
-    .catch(function(error){
-        errorText.style.color = "red";
-        errorText.textContent = "Không thể kết nối, vui lòng kiểm tra mạng.";
+
+        errorText.style.color = "var(--color-primary)";
+        errorText.textContent = "Đang gửi...";
+
+        fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: {
+                "Accept": "application/json"
+            }
+        })
+        .then(function(response) {
+            if (response.ok) {
+                errorText.style.color = "green";
+                errorText.textContent = "Gửi thành công! Cảm ơn bạn đã liên hệ.";
+                form.reset();
+            } else {
+                errorText.style.color = "red";
+                errorText.textContent = "Có lỗi xảy ra, vui lòng thử lại";
+            }
+        })
+        .catch(function(error) {
+            errorText.style.color = "red";
+            errorText.textContent = "Không thể kết nối, vui lòng kiểm tra mạng.";
+        });
     });
-});
+}
 
 // FAQ Accordion
 const faqItems = document.querySelectorAll(".faq-item");
 
-faqItems.forEach(function(item){
-    const question = item.querySelector(".faq-question");
-    question.addEventListener("click", function() {
-        item.classList.toggle("active");
+if (faqItems.length > 0) {
+    faqItems.forEach(function(item){
+        const question = item.querySelector(".faq-question");
+        question.addEventListener("click", function() {
+            item.classList.toggle("active");
+        });
     });
-});
+}
