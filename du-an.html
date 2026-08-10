@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự Án - SunPower Việt</title>
+    <meta name="description" content="Khám phá các dự án điện mặt trời SunPower Việt đã triển khai cho nhà máy sản xuất, kho vận, văn phòng trên toàn quốc.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☀️</text></svg>">
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <section class="page-hero">
+        <h1>Dự Án Tiêu Biểu</h1>
+        <p>Hơn 150 dự án điện mặt trời đã và đang vận hành trên toàn quốc</p>
+    </section>
+
+    <section class="projects-full">
+        <div class="filter-buttons" id="filterButtons">
+            <button class="filter-btn active" data-nganh="tat-ca">Tất Cả</button>
+            <button class="filter-btn" data-nganh="san-xuat">Sản Xuất</button>
+            <button class="filter-btn" data-nganh="kho-van">Kho Vận</button>
+            <button class="filter-btn" data-nganh="van-phong">Văn Phòng</button>
+        </div>
+
+        <div class="project-cards" id="allProjectCards">
+            <!-- JS tự động render vào đây -->
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

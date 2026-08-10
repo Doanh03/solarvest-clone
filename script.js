@@ -30,19 +30,43 @@ const danhSachDuAn = [
     {
         ten: "Nhà Máy Dệt May",
         diaDiem: "Bình Dương",
+        nganh: "san-xuat",
         congSuat: "800 kWp",
         anh: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400"
     },
     {
         ten: "Nhà Máy Chế Biến Gỗ",
         diaDiem: "Đồng Nai",
+        nganh: "san-xuat",
         congSuat: "600 kWp",
         anh: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400"
     },
     {
         ten: "Nhà Máy Thực Phẩm",
         diaDiem: "Hải Dương",
+        nganh: "san-xuat",
         congSuat: "1,200 kWp",
+        anh: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400"
+    },
+    {
+        ten: "Kho Vận Logistics ABC",
+        diaDiem: "Long An",
+        congSuat: "450 kWp",
+        nganh: "kho-van",
+        anh: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400"
+    },
+    {
+        ten: "Trung Tâm Phân Phối XYZ",
+        diaDiem: "Bắc Ninh",
+        congSuat: "700 kWp",
+        nganh: "kho-van",
+        anh: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400"
+    },
+    {
+        ten: "Tòa Nhà Văn Phòng Sun Tower",
+        diaDiem: "TP.HCM",
+        congSuat: "300 kWp",
+        nganh: "van-phong",
         anh: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400"
     }
 ];
@@ -113,8 +137,18 @@ if (testimonialContainer) {
 const projectContainer = document.querySelector("#projectCards");
 
 if (projectContainer) {
-    danhSachDuAn.forEach(function(duAn) {
-        projectContainer.innerHTML += `...`;
+    const duAnNoiBat = danhSachDuAn.slice(0, 3);
+
+    duAnNoiBat.forEach(function(duAn) {
+        projectContainer.innerHTML += `
+            <div class="project-card">
+                <img src="${duAn.anh}" alt="${duAn.ten}">
+                <div class="project-info">
+                    <h3>${duAn.ten}</h3>
+                    <p>${duAn.diaDiem} &middot; ${duAn.congSuat}</p>
+                </div>
+            </div>
+        `;
     });
 }
 
@@ -180,5 +214,49 @@ if (faqItems.length > 0) {
         question.addEventListener("click", function() {
             item.classList.toggle("active");
         });
+    });
+}
+
+// ===== TRANG DỰ ÁN: RENDER TOÀN BỘ + LỌC THEO NGÀNH =====
+const allProjectContainer = document.querySelector("#allProjectCards");
+const filterButtons = document.querySelector("#filterButtons");
+
+function renderProjects(danhSach) {
+    allProjectContainer.innerHTML = "";
+    danhSach.forEach(function(duAn) {
+        allProjectContainer.innerHTML += `
+            <div class="project-card">
+                <img src="${duAn.anh}" alt="${duAn.ten}">
+                <div class="project-info">
+                    <h3>${duAn.ten}</h3>
+                    <p>${duAn.diaDiem} &middot; ${duAn.congSuat}</p>
+                </div>
+            </div>
+        `;
+    });
+}
+
+if (allProjectContainer) {
+    renderProjects(danhSachDuAn);
+
+    filterButtons.addEventListener("click", function(event) {
+        if (event.target.classList.contains("filter-btn")) {
+
+            document.querySelectorAll(".filter-btn").forEach(function(btn) {
+                btn.classList.remove("active");
+            });
+            event.target.classList.add("active");
+
+            const nganhDuocChon = event.target.dataset.nganh;
+
+            if (nganhDuocChon === "tat-ca") {
+                renderProjects(danhSachDuAn);
+            } else {
+                const ketQuaLoc = danhSachDuAn.filter(function(duAn) {
+                    return duAn.nganh === nganhDuocChon;
+                });
+                renderProjects(ketQuaLoc);
+            }
+        }
     });
 }
