@@ -310,3 +310,18 @@ if (countNumbers.length > 0) {
         observer.observe(number);
     });
 }
+
+// ===== CAROUSEL DỰ ÁN =====
+const arrowLeft = document.querySelector("#arrowLeft");
+const arrowRight = document.querySelector("#arrowRight");
+const projectCardsWrapper = document.querySelector("#projectCards");
+
+if (arrowLeft && arrowRight && projectCardsWrapper) {
+    arrowRight.addEventListener("click", function() {
+        projectCardsWrapper.scrollBy({ left: 320, behavior: "smooth" });
+    });
+
+    arrowLeft.addEventListener("click", function() {
+        projectCardsWrapper.scrollBy({ left: -320, behavior: "smooth" });
+    });
+}

@@ -199,10 +199,30 @@ color: var(--color-text);
     text-align: center;
 }
 
+/* ===== CAROUSEL ===== */
+.carousel-wrapper {
+    position: relative;
+}
+
 .project-cards {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.project-cards::-webkit-scrollbar {
+    display: none;
+}
+
+.project-cards .project-card {
+    flex: 0 0 260px;
+}
+
+.carousel-arrow {
+    display: none;
 }
 
 .project-card {
@@ -235,6 +255,35 @@ color: var(--color-text);
     font-size: 13px;
 }
 
+/* ===== PROJECTS HEADER với nút Xem Tất Cả ===== */
+.projects-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.projects-header .section-title {
+    margin-bottom: 0;
+}
+
+.btn-view-all {
+    display: inline-block;
+    padding: 10px 24px;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-view-all:hover {
+    background-color: var(--color-primary);
+    color: white;
+}
 /* ===== CONTACT (MOBILE FIRST) ===== */
 .contact {
     padding: 50px 20px;
@@ -381,7 +430,6 @@ color: var(--color-text);
 }
 
 /* ===== PAGE HERO (dùng chung cho các trang con) ===== */
-/* ===== PAGE HERO (dùng chung cho các trang con) ===== */
 .page-hero {
     position: relative;
     overflow: hidden;
@@ -446,6 +494,8 @@ color: var(--color-text);
 .about-image img {
     width: 100%;
     border-radius: 12px;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 25%);
+    mask-image: linear-gradient(to right, transparent 0%, black 45%);
 }
 
 /* ===== VALUES ===== */
@@ -539,6 +589,13 @@ color: var(--color-text);
 .service-detail-image img {
     width: 100%;
     border-radius: 12px;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 25%);
+    mask-image: linear-gradient(to right, transparent 0%, black 25%);
+}
+
+.service-detail-item.reverse .service-detail-image img {
+    -webkit-mask-image: linear-gradient(to left, transparent 0%, black 25%);
+    mask-image: linear-gradient(to left, transparent 0%, black 25%);
 }
 
 /* ===== CTA SECTION ===== */
@@ -806,6 +863,41 @@ color: var(--color-text);
         width: 300px;
     }
 
+    .projects-header {
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 50px;
+    }
+
+    .carousel-arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1px solid #ddd;
+        background-color: white;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 10;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .arrow-left {
+        left: -22px;
+    }
+
+    .arrow-right {
+        right: -22px;
+    }
+
+    .project-cards .project-card {
+        flex: 0 0 300px;
+    }
     /* CONTACT DESKTOP */
     .contact {
         padding: 80px 20px;
