@@ -275,3 +275,38 @@ if (allProjectContainer) {
         }
     });
 }
+
+// ===== HIỆU ỨNG ĐẾM SỐ KHI CUỘN TỚI =====
+function demSo(element, target, suffix) {
+    let current = 0;
+    const buoc = target / 60;
+
+    const dem = setInterval(function() {
+        current += buoc;
+        if (current >= target) {
+            element.textContent = target.toLocaleString("vi-VN") + suffix;
+            clearInterval(dem);
+        } else {
+            element.textContent = Math.floor(current).toLocaleString("vi-VN");
+        }
+    }, 25);
+}
+
+const countNumbers = document.querySelectorAll(".count-number");
+
+if (countNumbers.length > 0) {
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                const target = parseInt(entry.target.dataset.target);
+                const suffix = entry.target.dataset.suffix || "";
+                demSo(entry.target, target, suffix);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    countNumbers.forEach(function(number) {
+        observer.observe(number);
+    });
+}
